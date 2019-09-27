@@ -1,0 +1,154 @@
+<meta charset="UTF-8">
+<html>
+<style>
+    .botao {
+        height: 20px;
+        width: 40px;
+        position: fixed;
+        left: 300px;
+    }
+
+    .mais {
+        top: 30px;
+    }
+
+    .menos {
+        top: 60px;
+    }
+
+    .check {
+        top: 90px;
+    }
+
+    .descricao {
+        left: 250px;
+    }
+
+    input {
+        position: fixed;
+        top: 0px;
+        left: 300px;
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 50;
+    }
+
+    #meu-canvas {
+  
+    }
+</style>
+
+<script>
+    /*
+Criar uma área para desenho de tamanho 800 x 600, na cor verde, centralizada na tela.
+O lápis para o desenho deverá ser quadrado (nos exercícios era um círculo).
+Deverá ter uma paleta de cores para o usuário escolher qualquer cor para desenhar.
+Deverá ter uma borracha para apagar os desenhos.
+Deverá ter botões para aumentar e reduzir o tamanho do lápis (você decide o tamanho mínimo e máximo).
+Não devem ser utilizadas as teclas para aumentar e diminuir o tamanho (nos exercícios era CTRL e ALT).
+    */
+    function preparaCenario() {
+        alturaTela = screen.height;
+        larguraTela = screen.width;
+        document.write("<div>&#32")
+        document.write('<input type="color">');
+        document.write('<canvas id="meu-canvas" width="800" height="600"></canvas>');
+        //Cria os botões, aumentar, diminui, borracha____________________
+        document.write('<button type="button" class="botao mais" onclick="aumentaPincel()">+</button>');
+        document.write('<button type="button" class="botao menos" onclick="diminuiPincel()">-</button>');
+        document.write('<input type="checkbox" class="botao check" name ="check" onclick="borrachaPincel()"></input>');
+        document.write('<label for="check" class="botao check descricao">Borracha</label>');
+        document.write("</div>")
+        //Inicia as variaveis de tela__________________________
+        tela = document.querySelector("canvas");
+        pincel = tela.getContext('2d');
+        palheta = document.querySelector("input");
+        //Calcula o centro da tela_____________________________
+        centroAltura = alturaTela / 2;
+        centroLargura = larguraTela / 2;
+        //Cria local de desenho________________________________
+        pincel.fillStyle = corPadrao;
+        pincel.fillRect(0, 0, 800, 600);
+    }
+
+    function desenhaQuadrado(x, y, tamanho) {
+        //Definições de pincel_________________________________
+        //define borracha ou não borracha__________________        
+        if (selecaoDaBorracha) {
+            corPincel = corPadrao;
+        } else {
+            corPincel = palheta.value;
+        }
+        pincel.fillStyle = corPincel;
+        pincel.fillRect(x, y, tamanho, tamanho);
+        pincel.fill();
+    }
+
+    function lidaComMovimentoDoMouse(e) {
+        if (permiteDesenhar) {
+            //Pega posição do mouse____________________________
+            var x = e.pageX - tela.offsetTop;
+            var y = e.pageY - tela.offsetTop;
+            //Defini até onde pode desenhar________________________
+            if (
+                x > centroLargura - 400 &&
+                x < centroLargura + (400 - tamanhoTincel) &&
+                y > centroAltura - 300 &&
+                y < centroAltura + (300 - tamanhoTincel)
+            ) {
+                desenhaQuadrado(x, y, tamanhoTincel);
+            }
+        }
+    }
+
+    function habilitaDesenhar() {
+        permiteDesenhar = true;
+    }
+
+    function desabilitaDesenhar() {
+        permiteDesenhar = false;
+    }
+
+    function aumentaPincel() {
+        tamanhoTincel += 5;
+    }
+
+    function diminuiPincel() {
+        if (tamanhoTincel > 5) {
+            tamanhoTincel -= 5;
+        }
+    }
+
+    function borrachaPincel() {
+        selecaoDaBorracha = !selecaoDaBorracha;
+    }
+
+    // Variaveis____________________
+    var tamanhoTincel = 10;
+    var permiteDesenhar = false;
+    var alturaTela;
+    var larguraTela;
+    var tela;
+    var pincel;
+    var palheta;
+    var centroAltura;
+    var centroLargura;
+    var corPincel;
+    var corPadrao = "green";
+    var selecaoDaBorracha = false;
+
+    //Main________________________
+    preparaCenario();
+    tela.onmousedown = habilitaDesenhar;
+    tela.onmouseup = desabilitaDesenhar;
+    tela.onmousemove = lidaComMovimentoDoMouse;
+</script>
+
+</html>

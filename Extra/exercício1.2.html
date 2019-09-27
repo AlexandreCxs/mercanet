@@ -1,0 +1,142 @@
+<meta charset="UTF-8">
+<script>
+    /*
+O sistema deverá questionar o usuário a quantidade de números que serão informados.
+Após deverá receber do usuário os números, um de cada vez. Deverão ser informados exatamente na quantidade informada pelo usuário.
+Os números que o usuário informar deverão ser positivos e menores que 1000.
+Retornar em tela:
+1)	Todos os números informados, separados por |
+2)	A média dos números
+3)	A soma dos números
+4)	A moda dos números
+5)	O maior número
+6)	O menor número
+Exemplo:
+Quantidade de números que você deseja informar: 5
+Informe o número (1): 10
+Informe o número (2): 1
+Informe o número (3): 9
+Informe o número (4): 9
+Informe o número (5): 20
+Resultado:
+Os números informados foram: 10 | 1 | 9 | 9 | 20
+A média dos números é 9,8
+A soma dos números é 49
+A moda dos números é 9
+O maior número é 20.
+O menor número é 1.
+
+    */
+    //Alimenta lista de valores__________________________
+    function recebeValores() {
+        for (var i = 0; i < quantidadeDeNumeros; i++) {
+            do {
+                aux = parseInt(prompt("Digire o numero" + (i + 1) + ":"));
+            } while (!(validaValor(aux)));
+            numeros.push(aux);
+        }
+    }
+    //Valida as entradas aceitas____________________________
+    function validaValor(x) {
+        if (x >= 1000 || x < 0) {
+            alert("Digite um numero entre 0 e 1000!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    //Imprime todos os valores digitados__________________
+    function mostraLista() {
+        document.write("Os valores digitados foram: ");
+        document.write("<br>");
+        for (var i = 0; i < numeros.length; i++) {
+            document.write(numeros[i]);
+            if ((i + 1) < numeros.length) {
+                document.write(" |")
+            }
+        }
+        quebraLinha();
+    }
+
+    function percorreCalcula() {
+        maior = numeros[0];
+        menor = numeros[0];
+        for (var i = 0; i < numeros.length; i++) {
+            soma += numeros[i];
+            if (maior < numeros[i]) {
+                maior = numeros[i];
+            }
+            if (menor > numeros[i]) {
+                menor = numeros[i];
+            }
+        }
+    }
+
+    function mostraModa() {
+        var aux = 0;
+        var count = 0;
+        var contador = [];
+        var posicao = 0;
+        //Alimenta outra lista com a contagem de numeros iguais________
+        for (var i = 0; i < numeros.length; i++) {
+            count = 0;
+            aux = numeros[i];
+            for (var j = 0; j < numeros.length; j++) {
+                if (aux == numeros[j]) {
+                    count++;
+                }
+            }
+            contador.push(count);
+        }
+        //Percorre nova lista verificando o nume que se repete mais vezes e armazena posição______
+        aux = contador[0];
+        for (i = 0; i < contador.length; i++) {
+            if (aux < contador[i]) {
+                aux = contador[i];
+                posicao = i;
+            }
+        }
+        //imprime o numero que se repete mais vezes_______________ 
+        document.write("A moda dos números é: " + numeros[posicao]);
+        quebraLinha();
+    }
+
+    function mostraPares() {
+        for (var i = 0; i < numeros.length; i++) {
+            if (numeros[i] % 2 == 0) {
+                if (i > 0) {
+                    document.write(" |")
+                }
+                document.write(numeros[i]);
+            }
+        }
+    }
+    
+    function mostraNaTela(frase){
+        document.write(frase);
+        quebraLinha();
+    }
+
+    function quebraLinha() {
+        document.write("<br><hr>");
+    }
+    //Declara e inicia variaveis_____________
+    var quantidadeDeNumeros = prompt("Digite a quantidade de números que você quer digitar:");
+    var numeros = [];
+    var aux;
+    var soma = 0;
+    var maior;
+    var menor;
+
+    //Main__________________________________
+    recebeValores();
+    mostraLista();
+    percorreCalcula();
+    mostraNaTela("A média dos valores é: " + soma / numeros.length);
+    mostraNaTela("A média dos valores é: " + soma);
+    mostraModa();
+    mostraNaTela("O maior número digitado é: " + maior);
+    mostraNaTela("O menor número digitado é: " + menor);
+    mostraPares();
+
+</script>

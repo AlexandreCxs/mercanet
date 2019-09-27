@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet " href="../reset.css">
+<link rel="stylesheet " href="../style-full.css">
+
+<head>
+    <title>Contagem de eleitores</title>
+</head>
+
+<body>
+    <h1>Contagem de eleitores de um Município</h1>
+    <div class="container exibe-inputs">
+        <h1>Digite: </h1>
+        <input type="text" class="digite" id="total" placeholder="Quantidade total de eleitores">
+        <input type="text" class="digite" id="brancos" placeholder="Votos Brancos">
+        <input type="text" class="digite" id="nulos" placeholder="Votos Nulos">
+        <input type="text" class="digite" id="validos" placeholder="Votos Validos">
+        <br>
+        <button id="calcular">Calcular</button>
+    </div>
+    <div class="exibe-erros  invisivel anima">
+    </div>
+
+    <div class="exibe-resultado invisivel anima">
+    </div>
+</body>
+<script src="../functionsComun.js"></script>
+<script src="logicaAtividade3.js"></script>
+
+</html>

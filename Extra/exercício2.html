@@ -1,0 +1,86 @@
+<meta charset="UTF-8">
+<script>
+    /*
+O usuário deverá informar uma string de no mínimo 8 caracteres
+e no máximo 20. Pode aceitar letras, números e os caracteres especiais @#$%.
+Após, o sistema deverá retornar na tela:
+Quantidade de letras minúsculas
+Quantidade de letras maiúsculas
+Quantidade de números
+Quantidade de caracteres especiais
+
+Exemplo:
+Informe a string: Aab158Bm$d@
+Quantidade de letras minúsculas: 4
+Quantidade de letras maiúsculas: 2
+Quantidade de números: 3
+Quantidade de caracteres especiais: 2
+
+    */
+    //teste as possibilidades aceitas da string______________
+    function testaAscII(letra) {
+        if (letra >= 35 && letra <= 37) {
+            contaCaracterEspecial++;
+            return true;
+        }
+        if (letra >= 48 && letra <= 57) {
+            contaNumero++;
+            return true;
+        }
+        if (letra == 64) {
+            contaCaracterEspecial++;
+            return true;
+        }
+        if (letra >= 65 && letra <= 90) {
+            contaLetraMaiuscula++;
+            return true;
+        }
+        if (letra >= 97 && letra <= 122) {
+            contaLetraMinuscula++;
+            return true;
+        }
+        return false;
+
+    }
+    //caso NAO atenda o criterio retorna treu e mostra mensagem na tela______
+    function atendeCriterio(palavra) {
+        if (palavra.length < 8 || palavra.length > 20) {
+            alert("Digite entre 8 e 20");
+            return false;
+        } else {
+            for (var i = 0; i < palavra.length; i++) {
+                if (!testaAscII(palavra[i].charCodeAt(toString(palavra[i])))) {
+                    alert("Você digitou um caracter invalido!");
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    function quebraLinha(){
+        document.write("<br><hr>");
+
+    }
+
+    //Variaveis___________
+    var contaLetraMinuscula = 0;
+    var contaLetraMaiuscula = 0;
+    var contaNumero = 0;
+    var contaCaracterEspecial = 0;
+    //Main___________________
+    do {
+        var stringRecebida = prompt("Digite uma palavra entre 8 e 20 caracteres:");
+    } while (!atendeCriterio(stringRecebida));
+
+    document.write("String informada: " + stringRecebida);
+    quebraLinha();
+    document.write("Quantidade de letras minúsculas: " + contaLetraMinuscula);
+    quebraLinha();
+    document.write("Quantidade de letras maiúsculas: " + contaLetraMaiuscula);
+    quebraLinha();
+    document.write("Quantidade de números: " + contaNumero);
+    quebraLinha();
+    document.write("Quantidade de caracteres especiais: " + contaCaracterEspecial);
+    quebraLinha();
+
+</script>

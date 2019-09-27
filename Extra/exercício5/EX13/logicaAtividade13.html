@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet " href="../reset.css">
+    <link rel="stylesheet " href="../style-full.css">
+    <link rel="stylesheet " href="logicaAtividade13.css">
+    <title>Calculo de Combustível</title>
+</head>
+
+<body>
+    <h1>Calculo de Combustível</h1>
+    <div class="container exibe-inputs">
+        <h1>Digite: </h1>
+        <input type="text" class="digite" id="qunatidade" placeholder="Quantidade de Combustível">
+        <select class="tipo-combustivel">
+            <option value="gasolina" nodeType="checkbox">Gasolina</option>
+            <option value="alcool" nodeType="checkbox">Álcool</option>
+        </select>
+        <button id="calcular">Calcular</button>
+    </div>
+    <div class="exibe-erros  invisivel anima">
+    </div>
+
+    <div class="exibe-resultado invisivel anima">
+    </div>
+</body>
+<script src="../functionsComun.js"></script>
+<script src="logicaAtividade13.js"></script>
+
+</html>

@@ -1,0 +1,85 @@
+body {
+    background-image: linear-gradient(135deg, transparent, transparent 14px, rgba(0, 0, 0, .1) 14px, rgba(0, 0, 0, .08) 15px);
+    background-size: 20px 20px;
+    background-position: fixed;
+}
+
+h1 {
+    font-size: 1.8em;
+    width: 55%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container, .exibe-erros, .exibe-resultado {
+    width: 55%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 4px 5px 6px #000;
+    box-sizing: border-box;
+}
+
+.container {
+    border-radius: 50px;
+    background-color: rgb(3, 32, 110);
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.exibe-erros {
+    margin-top: 1em;
+    background-color: rgba(255, 0, 0, 0.493);
+    color: #fff;
+}
+
+.exibe-resultado {
+    margin-top: 1em;
+    background-color: rgba(0, 68, 255, 0.493);
+    color: #fff;
+}
+
+.container h1 {
+    margin-bottom: 10px;
+   
+}
+
+.invisivel {
+    display: none;
+}
+
+.anima {
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+#calcular {
+    width: 14em;
+    padding: .5em;
+}
+
+.digite {
+    height: 1.5em;
+    margin-bottom: .2em;
+    padding: .5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.campo-errado{
+    border-color: rgba(255, 0, 0, 0.507);
+    box-shadow: inset 0 0 10px red;
+}

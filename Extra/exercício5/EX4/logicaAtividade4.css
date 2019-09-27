@@ -1,0 +1,26 @@
+.exibe-resultado table{
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.container h1{
+    font-size: 1.3em;
+}
+.botao-proximo{
+    width: 14em;
+    margin-bottom: .2em;
+    padding: .5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td,
+th {
+    padding: .5em;
+    text-align: left;
+}
+
+tr:nth-of-type(odd) {
+    background-color: rgb(207, 207, 207);
+}
